@@ -1,3 +1,3 @@
-const generateMessage = (name) => `Hello ${name} sedfgsdfg!`
+const generateMessage = (name) => `Hello ${name}!`
 
 module.exports = { generateMessage };
