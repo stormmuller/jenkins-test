@@ -7,9 +7,6 @@ pipeline {
     stage('Example') {
       steps {
         sh 'npm ci'
-      }
-
-      steps {
         sh 'npm run test'
       }
     }
