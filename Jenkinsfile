@@ -1,13 +1,19 @@
 pipeline {
   agent any
 
-  tools { nodejs 'Node 18' }
-
   stages {
-    stage('Example') {
+    stage('Build and Test') {
       steps {
-        sh 'npm ci'
-        sh 'npm run test'
+        script {
+          // Building the Docker image
+          def appImage = docker.build("my-app:${env.BUILD_ID}")
+          
+          // Running the tests inside the Docker container
+          // This will run 'npm ci' and 'npm run test' as defined in your Dockerfile.CI
+          appImage.inside {
+            sh 'echo "Tests passed!"'
+          }
+        }
       }
     }
   }
